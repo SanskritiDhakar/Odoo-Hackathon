@@ -31,7 +31,7 @@ This system provides an end-to-end solution for managing reimbursements by enabl
 
 ## 🚀 Getting Started
 1. Clone the repository  
-   git clone https://github.com/your-username/your-repo-name.git  
+   git clone https://github.com/SanskritiDhakar/Odoo-Hackathon 
 
 2. Install dependencies  
    npm install  
