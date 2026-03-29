@@ -1,19 +1,26 @@
 const express = require("express");
 const router = express.Router();
+const Expense = require("../models/Expense");
 
-const {
-  createExpense,
-  getExpenses,
-  updateStatus
-} = require("../controllers/expenseController");
+// CREATE
+router.post("/", async (req, res) => {
+  try {
+    const expense = new Expense(req.body);
+    await expense.save();
+    res.json(expense);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
-// Create expense
-router.post("/", createExpense);
-
-// Get all expenses
-router.get("/", getExpenses);
-
-// Update status (approve/reject)
-router.put("/:id", updateStatus);
+// GET ALL
+router.get("/", async (req, res) => {
+  try {
+    const expenses = await Expense.find().sort({ date: -1 });
+    res.json(expenses);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 module.exports = router;

@@ -1,18 +1,16 @@
 const mongoose = require("mongoose");
 
 const expenseSchema = new mongoose.Schema({
-  title: String,
   amount: Number,
   category: String,
   description: String,
-  date: {
-    type: Date,
-    default: Date.now
-  },
+  date: Date,
+  currency: String,
   status: {
     type: String,
-    default: "pending"
-  }
+    default: "Pending"
+  },
+  user_id: Number
 });
 
 module.exports = mongoose.model("Expense", expenseSchema);
